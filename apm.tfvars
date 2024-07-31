@@ -6,10 +6,10 @@ apm-policy-conditions = {
     enabled                      = "true"
     violation_time_limit_seconds = 259200
     query                        = "SELECT  apdex(apm.service.apdex.user) as 'End user' FROM Metric WHERE (entity.guid = 'NDQzODI2MHxBUE18QVBQTElDQVRJT058MTA4Njc3NTUyMg')"
-    operator                     = "above"
-    threshold                    = 0.7
-    threshold_duration           = 300
-    threshold_occurrences        = "all"
+    critical_operator                     = "above"
+    critical_threshold                    = 0.7
+   critical_threshold_duration           = 300
+     critical_threshold_occurrences        = "all"
     aggregation_window           = 60
     aggregation_method           = "event_flow"
     aggregation_delay            = 120
@@ -20,51 +20,51 @@ apm-policy-conditions = {
     enabled                      = "true"
     violation_time_limit_seconds = 259200
     query                        = "SELECT  apdex(apm.service.apdex.user) as 'End user' FROM Metric WHERE (entity.guid = 'NDQzODI2MHxBUE18QVBQTElDQVRJT058MTA4Njc3NTUyMg')"
-    operator                     = "above"
-    threshold                    = 0.7
-    threshold_duration           = 300
-    threshold_occurrences        = "all"
+    critical_operator                     = "above"
+    critical_threshold                    = 0.7
+    critical_threshold_duration           = 300
+    critical_threshold_occurrences        = "all"
     aggregation_window           = 60
     aggregation_method           = "event_flow"
     aggregation_delay            = 120
   }
 }
 
-alert_destination = {
-  apm-alert-destination = {
-    account_id                    = 4438260
-    notification_destination_name = "apm-alert-destination"
-    notification_destination_type = "EMAIL"
-    key_destination               = "email"
-    notification_email            = "gsrishti111@gmail.com"
-  }
-}
+# alert_destination = {
+#   apm-alert-destination = {
+#     account_id                    = 4438260
+#     notification_destination_name = "apm-alert-destination"
+#     notification_destination_type = "EMAIL"
+#     key_destination               = "email"
+#     notification_email            = "gsrishti111@gmail.com"
+#   }
+# }
 
-alert_channel = {
-  browser-alert-channel = {
-    account_id                    = 4438260
-    notification_channel_name     = "apm-alert-channel"
-    notification_channel_type     = "EMAIL"
-     notification_destination_name ="apm-alert-destination"
-    product                       = "IINT"
+# alert_channel = {
+#   browser-alert-channel = {
+#     account_id                    = 4438260
+#     notification_channel_name     = "apm-alert-channel"
+#     notification_channel_type     = "EMAIL"
+#      notification_destination_name ="apm-alert-destination"
+#     product                       = "IINT"
      
-    key_property                  = "subject"
-    notification_subject          = "apm Alert"
-  }
-}
+#     key_property                  = "subject"
+#     notification_subject          = "apm Alert"
+#   }
+# }
 
-workflows = {
-  browser-alert-workflows = {
-    name                      = "apm Alert Workflow"
-    muting_rules_handling     = "NOTIFY_ALL_ISSUES"
-    filter_name               = " Filter-EXAMPLE"
-    filter                    = "FILTER"
-    filter_attribute          = "severity"
-    filter_operator           = "IS"
-    filter_values             = ["critical"]
-    notification_channel_name = "apm-alert-channel"
+# workflows = {
+#   browser-alert-workflows = {
+#     name                      = "apm Alert Workflow"
+#     muting_rules_handling     = "NOTIFY_ALL_ISSUES"
+#     filter_name               = " Filter-EXAMPLE"
+#     filter                    = "FILTER"
+#     filter_attribute          = "severity"
+#     filter_operator           = "IS"
+#     filter_values             = ["critical"]
+#     notification_channel_name = "apm-alert-channel"
 
 
-  }
-}
+#   }
+# }
 
